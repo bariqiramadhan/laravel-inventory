@@ -54,11 +54,13 @@
                                         <x-button-delete :id="$order->id" :url="route('customer.order.destroy', $order->id)" title=""
                                             class="btn btn-danger btn-sm" />
                                     @elseif($order->status == App\Enums\OrderStatus::Success)
-                                        <form action="{{ route('cart.order', $product[0]->slug) }}" method="POST">
-                                            @csrf
-                                            <x-button-save title="Tambahkan Keranjang" icon="shopping-cart"
-                                                class="btn btn-primary btn-sm" />
-                                        </form>
+                                        @if(isset($product[$order->id]))
+                                            <form action="{{ route('cart.order', $product[$order->id]->slug) }}" method="POST">
+                                                @csrf
+                                                <x-button-save title="Tambahkan Keranjang" icon="shopping-cart"
+                                                    class="btn btn-primary btn-sm" />
+                                            </form>
+                                        @endif
                                     @endif
                                 </td>
                             </tr>

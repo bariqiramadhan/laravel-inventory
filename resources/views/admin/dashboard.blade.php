@@ -114,7 +114,7 @@
                     <i class="fas fa-info-circle mr-2 fa-lg"></i>
                     Saat ini belum ada permintaan barang
                 </div>
-            @else
+            @elseif ($orders->count() != 0)
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                     <i class="fas fa-info-circle mr-2 fa-lg"></i>
                     Saat ini terdapat {{ $orders->count() }} permintaan barang menunggu konfirmasi.
